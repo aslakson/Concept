@@ -1,11 +1,32 @@
 Concept::Application.routes.draw do
+  devise_for :users
+  resources :users, :only => :show
+  resources :ammenities, :only => :show
+  resources :services, :only => :show
+  resources :activities, :only => :show
+
+  namespace :manage do
+    resources :organizations, :shallow =>true do 
+      resources :locations do
+        resources :venues do
+
+        end
+      end
+    end
+    resources :activities, :services, :ammenities
+  end
+
+  resources :organizations, :only => [:index, :show], :shallow => true do
+    resources :locations, :only => [:index, :show] do
+      resources :venues, :only => :show do
+        
+      end
+    end
+  end
+
   #get \"users\/show\"
 
   root :to => "home#index"
-
-  devise_for :users
-  resources :users, :only => :show
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
