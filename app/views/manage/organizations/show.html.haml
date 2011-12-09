@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @organization.name
+%p
+  %b Description:
+  = @organization.description
+%p
+  %b Url:
+  = @organization.url
+%p
+  %b Email address:
+  = @organization.email_address
+%p
+  %b Address 1:
+  = @organization.address_1
+%p
+  %b Address 2:
+  = @organization.address_2
+%p
+  %b State:
+  = @organization.state
+%p
+  %b Zip code:
+  = @organization.zip_code
+%p
+  %b Telephone:
+  = @organization.telephone
+%p
+  %b Latitude:
+  = @organization.latitude
+%p
+  %b Longitude:
+  = @organization.longitude
+
+= link_to 'Edit', edit_manage_organization_path(@organization)
+\|
+= link_to 'Back', manage_organizations_path

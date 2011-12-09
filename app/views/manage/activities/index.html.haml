@@ -1,0 +1,21 @@
+%h1 Listing activities
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @activities.each do |activity|
+    %tr
+      %td= activity.name
+      %td= activity.description
+      %td= link_to 'Show', [:manage, activity]
+      %td= link_to 'Edit', edit_manage_activity_path(activity)
+      %td= link_to 'Destroy', [:manage, activity], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Activity', new_manage_activity_path

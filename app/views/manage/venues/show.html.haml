@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @venue.name
+%p
+  %b Description:
+  = @venue.description
+%p
+  %b Url:
+  = @venue.url
+%p
+  %b Email address:
+  = @venue.email_address
+%p
+  %b Location:
+  = @venue.location_id
+
+= link_to 'Edit', edit_manage_venue_path(@venue)
+\|
+= link_to 'Back', manage_venues_path

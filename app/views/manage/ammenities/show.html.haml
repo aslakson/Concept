@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @ammenity.name
+%p
+  %b Description:
+  = @ammenity.description
+
+= link_to 'Edit', edit_manage_ammenity_path(@ammenity)
+\|
+= link_to 'Back', manage_ammenities_path

@@ -1,0 +1,21 @@
+%h1 Listing services
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @services.each do |service|
+    %tr
+      %td= service.name
+      %td= service.description
+      %td= link_to 'Show', [:manage, service]
+      %td= link_to 'Edit', edit_manage_service_path(service)
+      %td= link_to 'Destroy', [:manage, service], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Service', new_manage_service_path

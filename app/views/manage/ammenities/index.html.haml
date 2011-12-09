@@ -1,0 +1,21 @@
+%h1 Listing ammenities
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @ammenities.each do |ammenity|
+    %tr
+      %td= ammenity.name
+      %td= ammenity.description
+      %td= link_to 'Show', [:manage, ammenity]
+      %td= link_to 'Edit', edit_manage_ammenity_path(ammenity)
+      %td= link_to 'Destroy', [:manage, ammenity], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Ammenity', new_manage_ammenity_path

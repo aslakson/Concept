@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @service.name
+%p
+  %b Description:
+  = @service.description
+
+= link_to 'Edit', edit_manage_service_path(@service)
+\|
+= link_to 'Back', manage_services_path

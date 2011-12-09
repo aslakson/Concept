@@ -1,0 +1,39 @@
+%h1 Listing organizations
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Url
+    %th Email address
+    %th Address 1
+    %th Address 2
+    %th State
+    %th Zip code
+    %th Telephone
+    %th Latitude
+    %th Longitude
+    %th
+    %th
+    %th
+
+  - @organizations.each do |organization|
+    %tr
+      %td= organization.name
+      %td= organization.description
+      %td= organization.url
+      %td= organization.email_address
+      %td= organization.address_1
+      %td= organization.address_2
+      %td= organization.state
+      %td= organization.zip_code
+      %td= organization.telephone
+      %td= organization.latitude
+      %td= organization.longitude
+      %td= link_to 'Show', [:manage, organization]
+      %td= link_to 'Edit', edit_manage_organization_path(organization)
+      %td= link_to 'Destroy', [:manage, organization], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Organization', new_manage_organization_path

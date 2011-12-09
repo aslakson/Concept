@@ -1,0 +1,8 @@
+%header.topbar
+  %div.fill
+    %div.container
+      = link_to('Home Field', root_path, :class=>'brand')
+      %ul.nav
+        %li.active
+          = link_to('Locations', locations_path)
+      = render 'shared/navigation'

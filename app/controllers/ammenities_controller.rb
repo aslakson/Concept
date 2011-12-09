@@ -1,0 +1,3 @@
+class AmmenitiesController < ApplicationController
+
+end
