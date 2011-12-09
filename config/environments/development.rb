@@ -14,10 +14,21 @@ Concept::Application.configure do
   config.action_controller.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  require 'tlsmail'     
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+  ActionMailer::Base.smtp_settings = {  
+    :address              => "smtp.gmail.com",  
+    :port                 => 587,  
+    :domain               => "unfamiliarterritory.net",  
+    :user_name            => "aslakson",  
+    :password             => "Omgykk78Jawtm78",  
+    :authentication       => "plain",  
+    :enable_starttls_auto => true  
+  }
+  config.action_mailer.default_url_options = { :host => 'unfamiliarterritory.net' }
   # A dummy setup for development - no deliveries, but logged
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 

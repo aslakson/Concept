@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111125124934) do
+ActiveRecord::Schema.define(:version => 20111209171258) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,21 @@ ActiveRecord::Schema.define(:version => 20111125124934) do
 
   add_index "ammenities_venues", ["ammenity_id", "venue_id"], :name => "index_ammenities_venues_on_ammenity_id_and_venue_id", :unique => true
 
+  create_table "facets", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facets_venues", :id => false, :force => true do |t|
+    t.integer "facet_id"
+    t.integer "venue_id"
+  end
+
+  add_index "facets_venues", ["facet_id", "venue_id"], :name => "index_facets_venues_on_facet_id_and_venue_id", :unique => true
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -55,7 +70,8 @@ ActiveRecord::Schema.define(:version => 20111125124934) do
     t.string   "zip_code"
     t.string   "telephone"
     t.float    "latitude"
-    t.string   "longitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
     t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -107,6 +123,13 @@ ActiveRecord::Schema.define(:version => 20111125124934) do
 
   add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id", :unique => true
 
+  create_table "searches", :force => true do |t|
+    t.string   "value"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "services", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -116,9 +139,10 @@ ActiveRecord::Schema.define(:version => 20111125124934) do
 
   add_index "services", ["name"], :name => "index_services_on_name", :unique => true
 
-  create_table "services_venues", :id => false, :force => true do |t|
+  create_table "services_venues", :force => true do |t|
     t.integer "service_id"
     t.integer "venue_id"
+    t.integer "price"
   end
 
   add_index "services_venues", ["service_id", "venue_id"], :name => "index_services_venues_on_service_id_and_venue_id", :unique => true
@@ -142,7 +166,9 @@ ActiveRecord::Schema.define(:version => 20111125124934) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "zip_code"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

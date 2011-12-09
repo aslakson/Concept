@@ -1,3 +1,22 @@
-%h3 Home
-- @users.each do |user|
-  %p User: #{link_to user.name, user}
+= debug(current_user)
+%section.container
+  %div.hero-unit
+    %h1= "Hello, Jason"
+    %p= "latin goes here"
+    %a{:class => 'btn primary large'}= "Something button"
+  %div.row
+    %div.span6
+      %h2= "Heading"
+      %p= "latin also goes here"
+      %p
+        %a.btn= "View details"
+    %div.span5
+      %h2= "Another Heading"
+      %p= "latin also goes here"
+      %p
+        %a.btn= "View details"
+    %div.span5
+      %h2= "Another Heading"
+      %p= "latin also goes here"
+      %p
+        %a.btn= "View details"

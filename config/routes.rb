@@ -1,6 +1,12 @@
 Concept::Application.routes.draw do
+  resources :searches
+
   devise_for :users
   resources :users, :only => :show
+  resources :search, :except => [:edit, :update, :destroy]
+  resources :organizations, :only => [:index, :show]
+  resources :locations, :only => [:index, :show]
+  resources :venues, :only => [:index, :show]
   resources :ammenities, :only => :show
   resources :services, :only => :show
   resources :activities, :only => :show
@@ -16,13 +22,13 @@ Concept::Application.routes.draw do
     resources :activities, :services, :ammenities
   end
 
-  resources :organizations, :only => [:index, :show], :shallow => true do
-    resources :locations, :only => [:index, :show] do
-      resources :venues, :only => :show do
-        
-      end
-    end
-  end
+  #resources :organizations, :only => [:index, :show], :shallow => true do
+  #  resources :locations, :only => [:index, :show] do
+  #    resources :venues, :only => :show do
+  #      
+  #    end
+  #  end
+  #end
 
   #get \"users\/show\"
 
