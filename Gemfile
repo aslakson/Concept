@@ -45,3 +45,4 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 gem "cancan"
 gem 'tlsmail'
 gem 'gmaps4rails'
+gem 'paperclip'

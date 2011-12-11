@@ -1,0 +1,44 @@
+.container.min-height-two
+  %h2 Make the most of your organization's fields
+  .row
+    .span7 
+      %p Eliminate lost opportunities - bring in more money
+    .span3
+      %small Find out who's looking for fields in your area
+    .span3
+      %small Teams pay money for fields 
+    .span3
+      %small You like money
+%br
+%h2 How do I get started?
+.container
+  .span-two-thirds.pull-left
+    .span3.pull-left
+      %dl
+        %dt List your fields
+        %dd lorumLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+    .span1.pull-left &gt;
+    .span3.pull-left
+      %dl
+        %dt Set the rules
+        %dd ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    .span1.pull-left &gt;
+    .span3.pull-left
+      %dl
+        %dt Approve usage requests
+        %dd Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+    %hr
+    %ul.pull-left
+      %li.span5.pull-left
+        lkajsdlfjad
+      %li.span5.pull-left
+        lkajsdlfjad
+      %li.span5.pull-left
+        lkajsdlfjad
+      %li.span5.pull-left
+        lkajsdlfjad
+  .span-one-third.pull-left
+    %ul
+      - @teams.each do |team|
+        %li
+          = link_to "#{team.name}", location_path(team)

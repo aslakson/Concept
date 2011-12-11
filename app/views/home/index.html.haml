@@ -1,22 +1,27 @@
-= debug(current_user)
 %section.container
-  %div.hero-unit
-    %h1= "Hello, Jason"
-    %p= "latin goes here"
-    %a{:class => 'btn primary large'}= "Something button"
-  %div.row
-    %div.span6
-      %h2= "Heading"
-      %p= "latin also goes here"
-      %p
-        %a.btn= "View details"
-    %div.span5
-      %h2= "Another Heading"
-      %p= "latin also goes here"
-      %p
-        %a.btn= "View details"
-    %div.span5
-      %h2= "Another Heading"
-      %p= "latin also goes here"
-      %p
-        %a.btn= "View details"
+  %h2 Featured Fields
+  .span-two-thirds.pull-left
+    = gmaps4rails(@maps)
+  .span-one-third.map-data-list.pull-right
+    - @locations.each do |location|
+      %div
+        %strong= location.name
+        <br>
+        %span= location.description
+%br
+.row
+  .span-one-third
+    %h2= "Why FieldMonster?"
+    %p= "latin also goes here"
+    %p
+      %a.btn= "Learn more"
+  .span-one-third
+    %h2= "Drive Field Utilization"
+    %p= "latin also goes here"
+    %p
+      %a.btn= "Learn more"
+  .span-one-third
+    %h2= "Find Your Field"
+    %p= "latin also goes here"
+    %p
+      %a.btn= "Learn more"

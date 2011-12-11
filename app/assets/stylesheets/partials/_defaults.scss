@@ -54,3 +54,42 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
+
+    header nav ul {
+      list-style: none;
+      margin: 0 0 2em;
+      padding: 0;
+    }
+    header nav ul li {
+      display: inline;
+    }
+    #container {
+      margin-top: 4em;
+    }
+    #flash_notice, #flash_alert {
+      padding: 5px 8px;
+      margin: 10px 0;
+    }
+    #flash_notice {
+      background-color: #CFC;
+      border: solid 1px #6C6;
+    }
+    #flash_alert {
+      background-color: #FCC;
+      border: solid 1px #C66;
+    }
+    .min-height-one {
+      height: 100px;
+      min-height: 100px;
+      height: auto;
+    }
+    .min-height-two {
+      height: 200px;
+      min-height: 200px;
+      height: auto;
+    }
+    .min-height-three {
+      height: 300px;
+      min-height: 300px;
+      height: auto;
+    }

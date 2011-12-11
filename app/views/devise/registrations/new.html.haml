@@ -6,12 +6,12 @@
   .clearfix
     = f.label :first_name
     .input
-      = f.email_field :first_name
+      = f.text_field :first_name
 
   .clearfix
     = f.label :last_name
     .input
-      = f.email_field :last_name
+      = f.text_field :last_name
 
   .clearfix
     = f.label :email
@@ -21,17 +21,17 @@
   .clearfix
     = f.label :zip_code
     .input
-      = f.email_field :zip_code
+      = f.text_field :zip_code
 
   .clearfix
     = f.label :password
     .input
-      = f.email_field :password
+      = f.password_field :password
 
   .clearfix
     = f.label :password_confirmation
     .input
-      = f.email_field :password_confirmation
+      = f.password_field :password_confirmation
 
   .actions
     = f.submit "Sign up", :class => "btn primary"

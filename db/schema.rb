@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209171258) do
+ActiveRecord::Schema.define(:version => 20111211135909) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -100,6 +100,10 @@ ActiveRecord::Schema.define(:version => 20111209171258) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "organizations", ["city"], :name => "index_organizations_on_city"
@@ -184,6 +188,10 @@ ActiveRecord::Schema.define(:version => 20111209171258) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "venues", ["email_address"], :name => "index_venues_on_email_address"

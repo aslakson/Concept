@@ -1,8 +1,13 @@
 %header.topbar
   %div.fill
     %div.container
-      = link_to('Home Field', root_path, :class=>'brand')
+      = link_to('FieldMonster.com', root_path, :class=>'brand')
+      = render 'searches/simple'
       %ul.nav
         %li.active
-          = link_to('Locations', locations_path)
+          = link_to('Soccer Fields', locations_path)
+        %li
+          = link_to("Field Seekers", organizations_path)
+        %li
+          = link_to("Field Providers", organizations_path)
       = render 'shared/navigation'

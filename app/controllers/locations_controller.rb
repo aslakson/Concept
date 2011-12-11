@@ -1,14 +1,8 @@
 class LocationsController < ApplicationController
-  # GET /locations
-  # GET /locations.json
-  def index
-    @locations = Location.all
-    @maps = @locations.to_gmaps4rails
+  respond_to :html, :xml, :json
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @locations }
-    end
+  def index
+    respond_with(@locations = Location.all, @maps = @locations.to_gmaps4rails)
   end
 
   # GET /locations/1

@@ -18,6 +18,7 @@ end
 
 module Concept
   class Application < Rails::Application
+    Paperclip::Railtie.insert
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
