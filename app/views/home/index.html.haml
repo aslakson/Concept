@@ -1,5 +1,4 @@
 %section.container
-  %h2 Featured Fields
   .span-two-thirds.pull-left
     = gmaps4rails(@maps)
   .span-one-third.map-data-list.pull-right
@@ -9,19 +8,32 @@
         <br>
         %span= location.description
 %br
+%h2.align-center Lorum ipsum dolar sit amet.
+%p.align-center Consectetur adipiscing elit, sed ante purus, mollis a lacinia ipsum.
 .row
   .span-one-third
-    %h2= "Why FieldMonster?"
-    %p= "latin also goes here"
-    %p
-      %a.btn= "Learn more"
+    .span4.center
+      %h2 Why FieldMonster?
+      %p
+        Seeker copy goes here. Seekr copy goes here. 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Sed ante purus, molis a lacinia scelerisque, mollis ac est. 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      %br
+      %p
+        %a.btn Searh Now
   .span-one-third
-    %h2= "Drive Field Utilization"
-    %p= "latin also goes here"
-    %p
-      %a.btn= "Learn more"
+    .span4.center
+      %h2.center Quick Search
+      = render 'searches/simple'
   .span-one-third
-    %h2= "Find Your Field"
-    %p= "latin also goes here"
-    %p
-      %a.btn= "Learn more"
+    .span4.center
+      %h2 Find Your Field
+      %p 
+        Supplier copy goes here. Supplier copy goes. 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Sed ante purus, molis a lacinia scelerisque, mollis ac est. 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      %br
+      %p
+        %a.btn Get Started

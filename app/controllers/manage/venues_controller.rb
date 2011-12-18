@@ -1,44 +1,22 @@
 class Manage::VenuesController < ApplicationController
-  # GET /venues
-  # GET /venues.json
+  respond_to :html, :xml, :json, :only => [:index, :show, :new, :edit]
+
   def index
-    @venues = Venue.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @venues }
-    end
+    respond_with(@venues = Venue.all)
   end
 
-  # GET /venues/1
-  # GET /venues/1.json
   def show
-    @venue = Venue.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @venue }
-    end
+    respond_with(@venue = Venue.find(params[:id]))
   end
 
-  # GET /venues/new
-  # GET /venues/new.json
   def new
-    @venue = Venue.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @venue }
-    end
+    respond_with(@venue = Venue.new)
   end
 
-  # GET /venues/1/edit
   def edit
-    @venue = Venue.find(params[:id])
+    respond_with(@venue = Venue.find(params[:id]))
   end
 
-  # POST /venues
-  # POST /venues.json
   def create
     @venue = Venue.new(params[:venue])
 

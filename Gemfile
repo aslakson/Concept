@@ -2,6 +2,7 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://rubygems.org'
 gem 'rails', '3.1.1'
+gem 'mysql'
 gem 'sqlite3'
 gem 'json'
 group :assets do
@@ -45,4 +46,5 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 gem "cancan"
 gem 'tlsmail'
 gem 'gmaps4rails'
+gem 'geokit-rails3'
 gem 'paperclip'

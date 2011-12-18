@@ -16,6 +16,5 @@
         = content_tag :div, msg, :id => "flash_\#{name}" if msg.is_a?(String)
       #main{:role => "main"}
         = yield
-      %footer
-        %p= "&copy; #{Time.new.year}".html_safe
+    = render 'shared/footer'
     = yield :scripts

@@ -11,8 +11,8 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :state
       t.string :zip_code
       t.string :telephone
-      t.float :latitude
-      t.float :longitude
+      t.float :lat
+      t.float :lng
 
       t.timestamps
     end
@@ -22,7 +22,7 @@ class CreateOrganizations < ActiveRecord::Migration
     add_index :organizations, :city
     add_index :organizations, :state
     add_index :organizations, :zip_code
-    add_index :organizations, :latitude
-    add_index :organizations, :longitude
+    add_index :organizations, :lat
+    add_index :organizations, :lng
   end
 end

@@ -1,14 +1,14 @@
 class Location < ActiveRecord::Base
   belongs_to :organization
   has_many :venues
-  acts_as_gmappable :check_process => :prevent_geocoding,
-                    :msg => "Sorry, not even Google could figure out where that is"
+  acts_as_gmappable :lat => 'lat', :lng => 'lng'
+  acts_as_mappable
+  before_validation :geocode_address, :on => :create
 
-  def gmaps4rails_address
-    "#{self.address_1}, #{self.city}, #{self.state}, #{self.zip_code}" 
-  end
-
-  def prevent_geocoding
-    address_1.blank? || (!latitude.blank? && !longitude.blank?) 
+  private
+  def geocode_address
+    geo=Geokit::Geocoders::MultiGeocoder.geocode ("#{address_1} #{city}, #{state} #{zip_code}")
+    errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
   end
 end

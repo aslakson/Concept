@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "telephone"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lng"
     t.boolean  "gmaps"
     t.integer  "organization_id"
     t.datetime "created_at"
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
   end
 
   add_index "locations", ["city"], :name => "index_locations_on_city"
-  add_index "locations", ["latitude"], :name => "index_locations_on_latitude"
-  add_index "locations", ["longitude"], :name => "index_locations_on_longitude"
+  add_index "locations", ["lat"], :name => "index_locations_on_lat"
+  add_index "locations", ["lng"], :name => "index_locations_on_lng"
   add_index "locations", ["name"], :name => "index_locations_on_name"
   add_index "locations", ["organization_id"], :name => "index_locations_on_organization_id"
   add_index "locations", ["state"], :name => "index_locations_on_state"
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "telephone"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
 
   add_index "organizations", ["city"], :name => "index_organizations_on_city"
   add_index "organizations", ["email_address"], :name => "index_organizations_on_email_address", :unique => true
-  add_index "organizations", ["latitude"], :name => "index_organizations_on_latitude"
-  add_index "organizations", ["longitude"], :name => "index_organizations_on_longitude"
+  add_index "organizations", ["lat"], :name => "index_organizations_on_lat"
+  add_index "organizations", ["lng"], :name => "index_organizations_on_lng"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
   add_index "organizations", ["state"], :name => "index_organizations_on_state"
   add_index "organizations", ["zip_code"], :name => "index_organizations_on_zip_code"

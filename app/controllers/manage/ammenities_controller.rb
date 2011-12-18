@@ -1,44 +1,22 @@
 class Manage::AmmenitiesController < ApplicationController
-  # GET /ammenities
-  # GET /ammenities.json
+  respond_to :html, :xml, :json, :only => [:index, :show, :new, :edit]
+
   def index
-    @ammenities = Ammenity.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @ammenities }
-    end
+    respond_with(@ammenities = Ammenity.all)
   end
 
-  # GET /ammenities/1
-  # GET /ammenities/1.json
   def show
-    @ammenity = Ammenity.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @ammenity }
-    end
+    respond_with(@ammenity = Ammenity.find(params[:id]))
   end
 
-  # GET /ammenities/new
-  # GET /ammenities/new.json
   def new
-    @ammenity = Ammenity.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @ammenity }
-    end
+    respond_with(@ammenity = Ammenity.new)
   end
 
-  # GET /ammenities/1/edit
   def edit
-    @ammenity = Ammenity.find(params[:id])
+    respond_with(@ammenity = Ammenity.find(params[:id]))
   end
 
-  # POST /ammenities
-  # POST /ammenities.json
   def create
     @ammenity = Ammenity.new(params[:ammenity])
 
@@ -53,8 +31,6 @@ class Manage::AmmenitiesController < ApplicationController
     end
   end
 
-  # PUT /ammenities/1
-  # PUT /ammenities/1.json
   def update
     @ammenity = Ammenity.find(params[:id])
 
@@ -69,8 +45,6 @@ class Manage::AmmenitiesController < ApplicationController
     end
   end
 
-  # DELETE /ammenities/1
-  # DELETE /ammenities/1.json
   def destroy
     @ammenity = Ammenity.find(params[:id])
     @ammenity.destroy

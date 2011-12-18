@@ -1,4 +1,10 @@
 Concept::Application.routes.draw do
+  get "about", :controller => 'common'
+  get "contact_us", :controller => 'common'
+  get "terms_privacy", :controller => 'common'
+  get "faq", :controller => 'common'
+  get "share", :controller => 'common'
+
   resources :searches
 
   devise_for :users
@@ -31,6 +37,8 @@ Concept::Application.routes.draw do
   #end
 
   #get \"users\/show\"
+
+  #match 'common/:action'
 
   root :to => "home#index"
 

@@ -10,8 +10,8 @@ class CreateLocations < ActiveRecord::Migration
       t.string :state
       t.string :zip_code
       t.string :telephone
-      t.float :latitude
-      t.float :longitude
+      t.float :lat
+      t.float :lng
       t.boolean :gmaps
       t.integer :organization_id
 
@@ -21,8 +21,8 @@ class CreateLocations < ActiveRecord::Migration
     add_index :locations, :city
     add_index :locations, :state
     add_index :locations, :zip_code
-    add_index :locations, :latitude
-    add_index :locations, :longitude
+    add_index :locations, :lat
+    add_index :locations, :lng
     add_index :locations, :organization_id
   end
 end

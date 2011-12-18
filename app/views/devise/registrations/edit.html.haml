@@ -1,47 +1,49 @@
-%h2= "Edit #{resource_name.to_s.humanize}"
+.row
+  %h2= "Edit #{resource_name.to_s.humanize}"
+  .span8
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
+      .clearfix
+        = f.label :first_name
+        .input
+          = f.text_field :first_name
 
-  .clearfix
-    = f.label :first_name
-    .input
-      = f.text_field :first_name
+      .clearfix
+        = f.label :last_name
+        .input
+          = f.text_field :last_name
 
-  .clearfix
-    = f.label :last_name
-    .input
-      = f.text_field :last_name
+      .clearfix
+        = f.label :email
+        .input
+          = f.email_field :email
 
-  .clearfix
-    = f.label :email
-    .input
-      = f.email_field :email
+      .clearfix
+        = f.label :zip_code
+        .input
+          = f.text_field :zip_code
 
-  .clearfix
-    = f.label :zip_code
-    .input
-      = f.text_field :zip_code
+      .clearfix
+        = f.label :password
+        .input
+          = f.password_field :password
 
-  .clearfix
-    = f.label :password
-    .input
-      = f.password_field :password
+      .clearfix
+        = f.label :password_confirmation
+        .input
+          = f.password_field :password_confirmation
 
-  .clearfix
-    = f.label :password_confirmation
-    .input
-      = f.password_field :password_confirmation
+      .actions
+        = f.submit "Update", :class => "btn primary"
+  .span7
+    = render :partial => "devise/shared/links"
 
-  .actions
-    = f.submit "Update", :class => "btn primary"
+.row
+  %h3 Cancel my account
 
-= render :partial => "devise/shared/links"
-
-%h3 Cancel my account
-
-%p 
-  Unhappy?
-  = link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete 
+  %p 
+    Unhappy?
+    = link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete 
 
 = link_to "Back", :back

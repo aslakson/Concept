@@ -1,0 +1,10 @@
+%footer
+  .container.align-center
+    %p
+      = link_to("About", about_path, :class => 'span2')
+      = link_to('Contact Us ', contact_us_path, :class => 'span2')
+      = link_to("Terms &amp; Privacy".html_safe, terms_privacy_path, :class => 'span2')
+      = link_to('FAQ', faq_path, :class => 'span2')
+      = link_to('My Account ', edit_user_registration_path, :class => 'span2')
+      = link_to('Tell a Friend', share_path, :class => 'span2')
+    %p.align-center.grayLight= "FieldMonster.com &copy; #{Time.new.year}".html_safe

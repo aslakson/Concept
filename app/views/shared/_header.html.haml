@@ -2,9 +2,8 @@
   %div.fill
     %div.container
       = link_to('FieldMonster.com', root_path, :class=>'brand')
-      = render 'searches/simple'
       %ul.nav
-        %li.active
+        %li
           = link_to('Soccer Fields', locations_path)
         %li
           = link_to("Field Seekers", organizations_path)

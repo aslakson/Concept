@@ -1,44 +1,22 @@
 class Manage::ServicesController < ApplicationController
-  # GET /services
-  # GET /services.json
+  respond_to :html, :xml, :json, :only => [:index, :show, :new, :edit]
+
   def index
-    @services = Service.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @services }
-    end
+    respond_with(@services = Service.all)
   end
 
-  # GET /services/1
-  # GET /services/1.json
   def show
-    @service = Service.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @service }
-    end
+    respond_with(@service = Service.find(params[:id]))
   end
 
-  # GET /services/new
-  # GET /services/new.json
   def new
-    @service = Service.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @service }
-    end
+    respond_with(@service = Service.new)
   end
 
-  # GET /services/1/edit
   def edit
-    @service = Service.find(params[:id])
+    respond_with(@service = Service.find(params[:id]))
   end
 
-  # POST /services
-  # POST /services.json
   def create
     @service = Service.new(params[:service])
 
@@ -53,8 +31,6 @@ class Manage::ServicesController < ApplicationController
     end
   end
 
-  # PUT /services/1
-  # PUT /services/1.json
   def update
     @service = Service.find(params[:id])
 
