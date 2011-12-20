@@ -1,9 +1,9 @@
 %section.container
   .span-two-thirds.pull-left
     = gmaps4rails(@maps)
-  .span-one-third.map-data-list.pull-right
+  .span-one-third.map-data-list.pull-left
     - @locations.each do |location|
-      %div
+      %a{:href=>location_path(location)}
         %strong= location.name
         <br>
         %span= location.description

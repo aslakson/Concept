@@ -5,7 +5,8 @@
  *= require twitter/bootstrap
  *= require_self
 */
-
+@import "compass";
+@import "compass/support";
 @import "partials/core";
 @import "partials/helpers";
 @import "partials/defaults";
