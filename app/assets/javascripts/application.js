@@ -5,8 +5,11 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery_ujs
+//= require_directory ./fullcalendar
 //= require twitter/bootstrap
 //= require_directory ./gmaps4rails
+//= require tinymce-jquery
 $(function () {
   $('.topbar').dropdown()
 })

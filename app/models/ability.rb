@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
-    debug(user.role)
+
     if user.role? :super_admin
       can :manage, :all
     elsif user.role? :organization_admin

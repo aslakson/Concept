@@ -13,27 +13,9 @@
 .row
   .span-one-third
     .span4.center
-      %h2 Why FieldMonster?
-      %p
-        Seeker copy goes here. Seekr copy goes here. 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed ante purus, molis a lacinia scelerisque, mollis ac est. 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      %br
-      %p
-        %a.btn Searh Now
+      = render "shared/why_fieldmonster"
+  .span-one-third
+    = render 'searches/simple'
   .span-one-third
     .span4.center
-      %h2.center Quick Search
-      = render 'searches/simple'
-  .span-one-third
-    .span4.center
-      %h2 Find Your Field
-      %p 
-        Supplier copy goes here. Supplier copy goes. 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Sed ante purus, molis a lacinia scelerisque, mollis ac est. 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      %br
-      %p
-        %a.btn Get Started
+      = render "shared/find_fields"

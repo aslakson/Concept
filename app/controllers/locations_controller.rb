@@ -6,6 +6,6 @@ class LocationsController < ApplicationController
   end
 
   def show
-    respond_with(@location = Location.find(params[:id]))
+    respond_with(@location = Location.find(params[:id], :include => :venues), @map = @location.to_gmaps4rails)
   end
 end

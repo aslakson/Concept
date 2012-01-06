@@ -1,0 +1,14 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @picture.name
+%p
+  =image_tag @picture.image.url(:thumb)
+%p
+  %b Description:
+  = @picture.description
+
+= link_to 'Edit', edit_manage_picture_path(@picture)
+\|
+= link_to 'Back', manage_pictures_path

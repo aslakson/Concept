@@ -1,7 +1,3 @@
-puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :first_name => 'Jason', :last_name => "Aslakson", :email => 'aslakson@gmail.com', :password => 'jawtm78', :password_confirmation => 'jawtm78', :zip_code => '02062'
-puts 'New user created: ' << user.first_name
-
 super_admin = Role.create! :name => 'SuperAdmin'
 organization_admin = Role.create! :name => 'OrganizationAdmin'
 location_admin = Role.create! :name => 'LocationAdmin'
@@ -9,13 +5,30 @@ venue_admin = Role.create! :name => 'VenueAdmin'
 basic_user = Role.create! :name => 'BasicUser'
 puts 'Roles have been created'
 
-user.roles << super_admin
-user.save!
+seeker = OrganizationType.create! :name => 'Seeker', 'Organizations that are looking for fields/locations to rent.'
+provider = OrganizationType.create! :name => 'Field Provider', 'Organizations that are looking to rent fields/locations they own or manage.'
+
+puts 'Setting up user record for Jason'
+jason = User.create! :first_name => 'Jason', :last_name => "Aslakson", :email => 'aslakson@gmail.com', :password => 'password', :password_confirmation => 'password', :zip_code => '02062'
+puts 'New user created: ' << jason.first_name
+
+
+jason.roles << super_admin
+jason.save!
+
+puts 'Setting up user record for Andrew'
+andrew = User.create! :first_name => 'Andrew', :last_name => 'Aslakson', :email => 'jason_aslakson@yahoo.com', :password => 'password', :password_confirmation => 'password', :zip_code => '02081'
+puts 'New user created: ' << andrew.first_name
+
+andrew.roles << basic_user
+andrew.save!
 
 walpoleRec = Organization.create! :name => 'Walpole Rec', :description => 'Walpoles finest', 
 :email_address => 'walpolerec@walpole.ma', :address_1 => '1 main street', :city => 'Walpole', 
-:state => 'MA', :zip_code => '02081', :telephone => '888-555-1212'
+:state => 'MA', :zip_code => '02081', :telephone => '888-555-1212', :organization_type_id => provider.id
 puts 'New organization created: ' << walpoleRec.name
+
+walpoleRecAdmin = OrganizationUser.create! :organization_id => walpoleRec.id, :user_id => jason.id, :role_id => super_admin.id
 
 walpoleHigh = Location.create! :name => 'Walpole High School', :description => 'All your sporting needs in one location', 
 :address_1 => '275 Common Street', :city => 'Walpole', :state => 'MA', 
@@ -39,6 +52,9 @@ puts 'New location created: ' << jasonsHouse.name
 backyard = Venue.create! :name => 'Backyard Soccer Field', :description => 'A tiny field with tiny little nets', 
 :url => 'http://unfamiliarterritory.net', :email_address => 'jason@unfamiliarterritory.net', :location_id => jasonsHouse.id
 puts 'New venue created: ' << backyard.name
+
+shamrocks = Organization.create! :name => 'Shamrock Pub Soccer Team', :descriptions => 'Norwood townies with a sprinkling of other losers', 
+:email_address =>"aslakson@gmail.com", :organization_type_id => seeker.id
 
 soccer = Activity.create! :name => 'Soccer', :description => 'Most people call it football'
 puts 'New activity created: ' << soccer.name
@@ -65,3 +81,57 @@ backyard.ammenities << wifi
 backyard.facets << sixVsix
 backyard.facets << grass
 backyard.save!
+
+states = State.create([
+  { :name => 'Alabama', :abbr => 'AL', :ansi_code => '1', :statens => '1779775'},
+  { :name => 'Alaska', :abbr => 'AK', :ansi_code => '2', :statens => '1785533'},
+  { :name => 'Arizona', :abbr => 'AZ', :ansi_code => '4', :statens => '1779777'},
+  { :name => 'Arkansas', :abbr => 'AR', :ansi_code => '5', :statens => '68085'},
+  { :name => 'California', :abbr => 'CA', :ansi_code => '6', :statens => '1779778'},
+  { :name => 'Colorado', :abbr => 'CO', :ansi_code => '8', :statens => '1779779'},
+  { :name => 'Connecticut', :abbr => 'CT', :ansi_code => '9', :statens => '1779780'},
+  { :name => 'Delaware', :abbr => 'DE', :ansi_code => '10', :statens => '1779781'},
+  { :name => 'District of Columbia', :abbr => 'DC', :ansi_code => '11', :statens => '1702382'},
+  { :name => 'Florida', :abbr => 'FL', :ansi_code => '12', :statens => '294478'},
+  { :name => 'Georgia', :abbr => 'GA', :ansi_code => '13', :statens => '1705317'},
+  { :name => 'Hawaii', :abbr => 'HI', :ansi_code => '15', :statens => '1779782'},
+  { :name => 'Idaho', :abbr => 'ID', :ansi_code => '16', :statens => '1779783'},
+  { :name => 'Illinois', :abbr => 'IL', :ansi_code => '17', :statens => '1779784'},
+  { :name => 'Indiana', :abbr => 'IN', :ansi_code => '18', :statens => '448508'},
+  { :name => 'Iowa', :abbr => 'IA', :ansi_code => '19', :statens => '1779785'},
+  { :name => 'Kansas', :abbr => 'KS', :ansi_code => '20', :statens => '481813'},
+  { :name => 'Kentucky', :abbr => 'KY', :ansi_code => '21', :statens => '1779786'},
+  { :name => 'Louisiana', :abbr => 'LA', :ansi_code => '22', :statens => '1629543'},
+  { :name => 'Maine', :abbr => 'ME', :ansi_code => '23', :statens => '1779787'},
+  { :name => 'Maryland', :abbr => 'MD', :ansi_code => '24', :statens => '1714934'},
+  { :name => 'Massachusetts', :abbr => 'MA', :ansi_code => '25', :statens => '606926'},
+  { :name => 'Michigan', :abbr => 'MI', :ansi_code => '26', :statens => '1779789'},
+  { :name => 'Minnesota', :abbr => 'MN', :ansi_code => '27', :statens => '662849'},
+  { :name => 'Mississippi', :abbr => 'MS', :ansi_code => '28', :statens => '1779790'},
+  { :name => 'Missouri', :abbr => 'MO', :ansi_code => '29', :statens => '1779791'},
+  { :name => 'Montana', :abbr => 'MT', :ansi_code => '30', :statens => '767982'},
+  { :name => 'Nebraska', :abbr => 'NE', :ansi_code => '31', :statens => '1779792'},
+  { :name => 'Nevada', :abbr => 'NV', :ansi_code => '32', :statens => '1779793'},
+  { :name => 'New Hampshire', :abbr => 'NH', :ansi_code => '33', :statens => '1779794'},
+  { :name => 'New Jersey', :abbr => 'NJ', :ansi_code => '34', :statens => '1779795'},
+  { :name => 'New Mexico', :abbr => 'NM', :ansi_code => '35', :statens => '897535'},
+  { :name => 'New York', :abbr => 'NY', :ansi_code => '36', :statens => '1779796'},
+  { :name => 'North Carolina', :abbr => 'NC', :ansi_code => '37', :statens => '1027616'},
+  { :name => 'North Dakota', :abbr => 'ND', :ansi_code => '38', :statens => '1779797'},
+  { :name => 'Ohio', :abbr => 'OH', :ansi_code => '39', :statens => '1085497'},
+  { :name => 'Oklahoma', :abbr => 'OK', :ansi_code => '40', :statens => '1102857'},
+  { :name => 'Oregon', :abbr => 'OR', :ansi_code => '41', :statens => '1155107'},
+  { :name => 'Pennsylvania', :abbr => 'PA', :ansi_code => '42', :statens => '1779798'},
+  { :name => 'Rhode Island', :abbr => 'RI', :ansi_code => '44', :statens => '1219835'},
+  { :name => 'South Carolina', :abbr => 'SC', :ansi_code => '45', :statens => '1779799'},
+  { :name => 'South Dakota', :abbr => 'SD', :ansi_code => '46', :statens => '1785534'},
+  { :name => 'Tennessee', :abbr => 'TN', :ansi_code => '47', :statens => '1325873'},
+  { :name => 'Texas', :abbr => 'TX', :ansi_code => '48', :statens => '1779801'},
+  { :name => 'Utah', :abbr => 'UT', :ansi_code => '49', :statens => '1455989'},
+  { :name => 'Vermont', :abbr => 'VT', :ansi_code => '50', :statens => '1779802'},
+  { :name => 'Virginia', :abbr => 'VA', :ansi_code => '51', :statens => '1779803'},
+  { :name => 'Washington', :abbr => 'WA', :ansi_code => '53', :statens => '1779804'},
+  { :name => 'West Virginia', :abbr => 'WV', :ansi_code => '54', :statens => '1779805'},
+  { :name => 'Wisconsin', :abbr => 'WI', :ansi_code => '55', :statens => '1779806'},
+  { :name => 'Wyoming', :abbr => 'WY', :ansi_code => '56', :statens => '1779807'}
+])

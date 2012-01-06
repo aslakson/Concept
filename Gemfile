@@ -9,6 +9,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'compass', '~> 0.11.5'
 end
 gem 'jquery-rails'
 if HOST_OS =~ /linux/i
@@ -48,3 +49,4 @@ gem 'tlsmail'
 gem 'gmaps4rails'
 gem 'geokit-rails3'
 gem 'paperclip'
+gem 'tinymce-rails'

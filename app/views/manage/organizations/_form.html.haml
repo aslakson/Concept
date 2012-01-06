@@ -5,45 +5,50 @@
       %ul
         - @organization.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :avatar
-    = f.file_field :avatar
-  .field
-    = f.label :url
-    = f.text_field :url
-  .field
-    = f.label :email_address
-    = f.text_field :email_address
-  .field
-    = f.label :address_1
-    = f.text_field :address_1
-  .field
-    = f.label :address_2
-    = f.text_field :address_2
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state
-    = f.text_field :state
-  .field
-    = f.label :zip_code
-    = f.text_field :zip_code
-  .field
-    = f.label :telephone
-    = f.text_field :telephone
-  .field
-    = f.label :latitude
-    = f.text_field :latitude
-  .field
-    = f.label :longitude
-    = f.text_field :longitude
+  .span8.pull-left.row
+    %fieldset.clearfix
+      .row
+        = f.label :name, "Organization Name"
+        .input
+          = f.text_field :name
+      .row
+        = f.label :url, "Website URL"
+        .input
+          = f.text_field :url
+      .row
+        = f.label :email_address
+        .input
+          = f.text_field :email_address
+      .row
+        = f.label :description
+        .input
+          = f.text_area :description, :rows => 5
+      .row
+        = f.label :avatar, "Logo"
+        .input
+          = f.file_field :avatar
+  .span8-pull-right.row
+    %fieldset.clearfix
+      .row
+        = f.label :address_1
+        .input
+          = f.text_field :address_1
+      .row
+        = f.label :address_2
+        .input
+          = f.text_field :address_2
+      .row
+        = f.label :city
+        .input
+          = f.text_field :city
+      .row
+        = f.label :state, "State/ZipCode"
+        .input
+          = collection_select :organization, :state, State.all, :name, :name, :class => 'small'
+          = f.text_field :zip_code, :class => 'small'
+      .row
+        = f.label :telephone
+        .input
+          = f.text_field :telephone
   .actions
     = f.submit 'Save'

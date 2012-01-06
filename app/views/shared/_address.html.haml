@@ -1,0 +1,10 @@
+.address
+  %span.address-1= address.address_1
+  %br
+  - if address.address_2?
+    %span.address-2= address.address_2
+    %br
+  %span.address-city= address.city
+  %span.address-state= "#{address.state},"
+  %span.address-zip-code= address.zip_code
+  

@@ -1,8 +1,10 @@
-= form_for @simpleSearch, :html => {:class => 'form-stacked', :id =>'simple-search'} do |f|
-  %fieldset
+.span4.center
+  %h2.center Quick Search
+  = form_for @simpleSearch, :html => {:class => 'form-stacked', :id =>'simple-search'} do |f|
+    %fieldset
+      .clearfix
+        = f.label :value, 'Zip Code'
+        .input
+          = f.text_field :value, :class => 'input-medium'
     .clearfix
-      = f.label :value, 'Zip Code'
-      .input
-        = f.text_field :value, :class => 'input-medium'
-  .clearfix
-    = f.submit "Search", :class => "btn align-right"
+      = f.submit "Search", :class => "btn align-right"

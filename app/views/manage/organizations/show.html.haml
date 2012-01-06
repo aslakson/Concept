@@ -2,39 +2,26 @@
 
 = image_tag @organization.avatar.url
 
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b Description:
-  = @organization.description
-%p
-  %b Url:
-  = @organization.url
-%p
-  %b Email address:
-  = @organization.email_address
-%p
-  %b Address 1:
-  = @organization.address_1
-%p
-  %b Address 2:
-  = @organization.address_2
-%p
-  %b State:
-  = @organization.state
-%p
-  %b Zip code:
-  = @organization.zip_code
-%p
-  %b Telephone:
-  = @organization.telephone
-%p
-  %b Latitude:
-  = @organization.latitude
-%p
-  %b Longitude:
-  = @organization.longitude
+.pull-right.span-one-thirds.map-small
+  = gmaps4rails(@map)
+.span-two-thirds
+  %h3= @organization.name
+  = render 'shared/address', :address => @organization
+  %hr
+  %p= @organization.description
+  - if @organization.locations.any?
+    - @organization.locations.each do |loc|
+      %h4= link_to loc.name, manage_location_path(loc)
+      %p= loc.description
+      - if loc.venues.any?
+        - loc.venues.each do |venue|
+          %h5= link_to venue.name, manage_venue_path(venue)
+          %p= venue.description
+  - if @organization.organization_users.any?
+    %h4= "#{@organization.name} Users"
+    %ul
+      - @organization.organization_users.each do |ou|
+        %li= "#{ou.user.first_name} #{ou.user.last_name}"
 
 = link_to 'Edit', edit_manage_organization_path(@organization)
 \|

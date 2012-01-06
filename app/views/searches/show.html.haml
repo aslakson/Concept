@@ -1,9 +1,12 @@
 %section.container
-  .span8.pull-right
-    = gmaps4rails(@maps)
-  - @locations.each do |location|
-    %a{:href => location_path(location)}
-      %span= location.name
-      %span= location.description
+  - if @locations.any?
+    .span8.pull-right
+      = gmaps4rails(@maps)
+    - @locations.each do |location|
+      %a{:href => location_path(location)}
+        %span= location.name
+        %span= location.description
+  - else
+    %h2 Sorry, your search returned no results
 
 = link_to 'Back', searches_path

@@ -8,12 +8,17 @@
         %li
           = link_to('Sign out', destroy_user_session_path, :method=>'delete', :class => "pull-right")
 - else
-  = form_tag user_session_path, :class => "pull-right" do
-    = text_field_tag 'user[email]', nil, :placeholder => "Username", :class => "input-small"
-    = password_field_tag 'user[password]', nil, :placeholder => "Password", :class => "input-small"
-    %button.btn Sign in
--#    = link_to "Forgot your password?", new_password_path('user')
--# - if user_signed_in?
--#   
--# - else
--#   = link_to('Sign up', new_user_registration_path)
+  %ul.nav.secondary-nav
+    %li
+      = link_to 'Create account', new_user_registration_path
+    %li.menu
+      %a.menu= "Login"
+      %ul.dropdown-menu
+        %li 
+          = form_tag user_session_path, {:class => 'span4'} do
+            .span3.center
+              = text_field_tag 'user[email]', nil, :placeholder => "Username", :class => "input-medium mbottom"
+              = password_field_tag 'user[password]', nil, :placeholder => "Password", :class => "input-medium mbottom"
+            .span3.center.mbottom
+              %button.btn Login
+              %small.pull-right= link_to "Forgot?", new_password_path('user')

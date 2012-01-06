@@ -1,36 +1,15 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @location.name
-%p
-  %b Description:
-  = @location.description
-%p
-  %b Notes:
-  = @location.notes
-%p
-  %b Address 1:
-  = @location.address_1
-%p
-  %b Address 2:
-  = @location.address_2
-%p
-  %b State:
-  = @location.state
-%p
-  %b Zip code:
-  = @location.zip_code
-%p
-  %b Telephone:
-  = @location.telephone
-%p
-  %b Latitude:
-  = @location.latitude
-%p
-  %b Longitude:
-  = @location.longitude
-
-= link_to 'Edit', edit_manage_location_path(@location)
-\|
-= link_to 'Back', manage_locations_path
+%section#location.container.min-height-three
+  #locationDetails.pull-left.span-two-thirds
+    %h2= @location.name
+    = render 'shared/address', :address => @location
+    %hr
+    %p= @location.description
+    - if @location.venues.any?
+      %h3 Fields at this location:
+      %ul
+        - @location.venues.each do |venue|
+          %li= link_to(venue.name, manage_venue_path(venue))
+    - else
+      %h3 There are no fields at this location.
+  #locationMap.pull-right.grid-one-third.map-small
+    = gmaps4rails(@map)

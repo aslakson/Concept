@@ -1,0 +1,42 @@
+#userhome.min-height-three
+  - if @organizations.size > 0
+    %h2 Your Organizations
+    - @organizations.each do |org|
+      .pull-right.span-one-thirds.map-small
+        = gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9},"markers" => {"data" => @map}})
+      .span-two-thirds
+        %h3= org.name
+        = render 'shared/address', :address => org
+        %p= org.description
+        - if org.locations.any?
+          - org.locations.each do |loc|
+            %h4= link_to loc.name, manage_location_path(loc)
+            %p= loc.description
+            - if loc.venues.any?
+              - loc.venues.each do |venue|
+                %h5= link_to venue.name, manage_venue_path(venue)
+                %p= venue.description
+  - else 
+    .hero-unit
+      %h1 Unleash the "Monster"
+      %p 
+        Find the fields you need - or increase your facility =-based the Revenue 500%. 
+        It's up to you - work with us and we'll make it happen. BTW, we don't guarangee
+        anything. We're really reaching here.
+      %p
+        = link_to "Get Started", new_manage_organization_path, {:class => 'btn primary'}
+    .row
+      .span8
+        .span7.center
+          =render "shared/register_team"
+      .span8
+        .span7.center
+          = render "shared/register_facilities"
+    %hr
+    .row
+      .span-one-third
+        = render "shared/why_fieldmonster"
+      .span-one-third
+        = render 'searches/simple'
+      .span-one-third
+        = render "shared/find_fields"

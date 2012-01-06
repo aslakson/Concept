@@ -26,8 +26,8 @@
       %td= location.state
       %td= location.zip_code
       %td= location.telephone
-      %td= location.latitude
-      %td= location.longitude
+      %td= location.lat
+      %td= location.lng
       %td= link_to 'Show', [:manage, location]
       %td= link_to 'Edit', edit_manage_location_path(location)
       %td= link_to 'Destroy', [:manage, location], :confirm => 'Are you sure?', :method => :delete

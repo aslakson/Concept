@@ -6,7 +6,6 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
-#require "gmaps4rails/googlemaps.js"
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -59,5 +58,6 @@ module Concept
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
   end
 end

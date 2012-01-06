@@ -1,3 +1,13 @@
-.row.min-height-three
-  %h2= @location.name
-  %p= @location.description
+%section#location.container.min-height-three
+  #locationDetails.pull-left.grid-two-thirds
+    %h2= @location.name
+    %p= @location.description
+    - if @location.venues.any?
+      %h3 Fields at this location:
+      %ul
+        - @location.venues.each do |venue|
+          %li= link_to(venue.name, manage_venue_path(venue))
+    - else
+      %h3 There are no fields at this location.
+  #locationMap.pull-right.grid-one-third.map-small
+    = gmaps4rails(@map)

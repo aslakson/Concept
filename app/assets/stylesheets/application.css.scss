@@ -2,14 +2,30 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require twitter/bootstrap
  *= require_self
 */
-@import "compass";
-@import "compass/support";
-@import "partials/core";
+
+// CSS Reset
+@import "bootstrap/reset";
+
+// Core variables and mixins
+@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins";
+
+// Grid system and page structure
+@import "bootstrap/scaffolding";
+
+// Styled patterns and elements
+@import "bootstrap/type";
+@import "bootstrap/forms";
+@import "bootstrap/tables";
+@import "bootstrap/patterns";
+
+@import "compass/css3/opacity";
 @import "partials/helpers";
 @import "partials/defaults";
 @import "partials/maps";
+@import "partials/forms";
 
+@import "sections/location";
 @import "sections/search"

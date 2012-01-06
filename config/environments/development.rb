@@ -25,10 +25,10 @@ Concept::Application.configure do
     :authentication       => "plain",  
     :enable_starttls_auto => true  
   }
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # A dummy setup for development - no deliveries, but logged
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
@@ -41,7 +41,14 @@ Concept::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+  config.logger = Logger.new(STDOUT)
 
   # Expands the lines which load the assets
   config.assets.debug = true
+end
+
+class ActionDispatch::Request
+  def remote_ip
+    "140.247.248.241"
+  end
 end

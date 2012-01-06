@@ -3,10 +3,11 @@
     %div.container
       = link_to('FieldMonster.com', root_path, :class=>'brand')
       %ul.nav
+        - if user_signed_in?
+          %li
+            = link_to 'My FieldMonster', user_root_path
         %li
-          = link_to('Soccer Fields', locations_path)
+          = link_to "Field Seekers", organizations_path
         %li
-          = link_to("Field Seekers", organizations_path)
-        %li
-          = link_to("Field Providers", organizations_path)
+          = link_to "Field Providers", organizations_path
       = render 'shared/navigation'

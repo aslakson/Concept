@@ -3,6 +3,7 @@ class CreateVenues < ActiveRecord::Migration
     create_table :venues do |t|
       t.string :name
       t.text :description
+      t.text :notes
       t.string :url
       t.string :email_address
       t.integer :location_id

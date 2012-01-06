@@ -28,8 +28,8 @@
       %td= organization.state
       %td= organization.zip_code
       %td= organization.telephone
-      %td= organization.latitude
-      %td= organization.longitude
+      %td= organization.lat
+      %td= organization.lng
       %td= link_to 'Show', [:manage, organization]
       %td= link_to 'Edit', edit_manage_organization_path(organization)
       %td= link_to 'Destroy', [:manage, organization], :confirm => 'Are you sure?', :method => :delete

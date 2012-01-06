@@ -1,0 +1,5 @@
+.slideshow
+  - if venue.pictures.any?
+    = image_tag venue.pictures.first.image.url(:medium)
+    - venue.pictures.each do |pic|
+      = image_tag pic.image.url(:thumb)

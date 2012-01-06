@@ -5,4 +5,6 @@ class Venue < ActiveRecord::Base
   has_and_belongs_to_many :facets
   has_and_belongs_to_many :services
   has_and_belongs_to_many :ammenities
+  has_and_belongs_to_many :pictures
+  
 end

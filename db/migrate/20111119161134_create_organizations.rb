@@ -2,6 +2,7 @@ class CreateOrganizations < ActiveRecord::Migration
   def change
     create_table :organizations do |t|
       t.string :name
+      t.integer :organization_type_id
       t.text :description
       t.string :url
       t.string :email_address
@@ -13,6 +14,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :telephone
       t.float :lat
       t.float :lng
+      t.boolean :gmaps
 
       t.timestamps
     end

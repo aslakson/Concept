@@ -1,4 +1,4 @@
-= form_for @location, :url => manage_organization_locations_path(@organization) do |f|
+= form_for [:manage, @location] do |f|
   -if @location.errors.any?
     #error_explanation
       %h2= "#{pluralize(@location.errors.count, "error")} prohibited this location from being saved:"
@@ -34,10 +34,17 @@
     = f.label :telephone
     = f.text_field :telephone
   .field
-    = f.label :latitude
-    = f.text_field :latitude
+    = f.label :lat
+    = f.text_field :lat
   .field
-    = f.label :longitude
-    = f.text_field :longitude
+    = f.label :lng
+    = f.text_field :lng
   .actions
     = f.submit 'Save'
+
+:javascript
+  $(function() {
+    $('textarea').tinymce({
+      theme: 'advanced'
+    });
+  });

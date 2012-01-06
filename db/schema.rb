@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211135909) do
+ActiveRecord::Schema.define(:version => 20120104192749) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
   add_index "locations", ["state"], :name => "index_locations_on_state"
   add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
 
+  create_table "organization_users", :force => true do |t|
+    t.integer "organization_id"
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "organization_users", ["organization_id", "user_id", "role_id"], :name => "org_user_role", :unique => true
+
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -98,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
     t.string   "telephone"
     t.float    "lat"
     t.float    "lng"
+    t.boolean  "gmaps"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -113,6 +122,24 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
   add_index "organizations", ["state"], :name => "index_organizations_on_state"
   add_index "organizations", ["zip_code"], :name => "index_organizations_on_zip_code"
+
+  create_table "pictures", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures_venues", :id => false, :force => true do |t|
+    t.integer "picture_id"
+    t.integer "venue_id"
+  end
+
+  add_index "pictures_venues", ["picture_id", "venue_id"], :name => "index_pictures_venues_on_picture_id_and_venue_id", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -151,6 +178,15 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
 
   add_index "services_venues", ["service_id", "venue_id"], :name => "index_services_venues_on_service_id_and_venue_id", :unique => true
 
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.string   "ansi_code"
+    t.string   "statens"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -183,6 +219,7 @@ ActiveRecord::Schema.define(:version => 20111211135909) do
   create_table "venues", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.text     "notes"
     t.string   "url"
     t.string   "email_address"
     t.integer  "location_id"

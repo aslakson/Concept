@@ -8,7 +8,7 @@ Concept::Application.routes.draw do
   resources :searches
 
   devise_for :users
-  resources :users, :only => :show
+  #resources :users, :only => :show
   resources :search, :except => [:edit, :update, :destroy]
   resources :organizations, :only => [:index, :show]
   resources :locations, :only => [:index, :show]
@@ -25,7 +25,7 @@ Concept::Application.routes.draw do
         end
       end
     end
-    resources :activities, :services, :ammenities
+    resources :activities, :services, :ammenities, :pictures
   end
 
   #resources :organizations, :only => [:index, :show], :shallow => true do
@@ -39,7 +39,7 @@ Concept::Application.routes.draw do
   #get \"users\/show\"
 
   #match 'common/:action'
-
+  match 'home' => 'manage/users#home', :as => :user_root
   root :to => "home#index"
 
   # The priority is based upon order of creation:

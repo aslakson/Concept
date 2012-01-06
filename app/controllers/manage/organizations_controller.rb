@@ -1,8 +1,9 @@
 class Manage::OrganizationsController < ApplicationController
+  before_filter :authenticate_user!
   respond_to :html, :xml, :json, :only => [:index, :show, :new, :edit]
 
   def index
-    respond_with(@organizations = Organization.all)
+    respond_with(@organizations = Organization.owned_by(current_user.id).all)
   end
 
   def show

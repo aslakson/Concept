@@ -1,21 +1,81 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @venue.name
-%p
-  %b Description:
-  = @venue.description
-%p
-  %b Url:
-  = @venue.url
-%p
-  %b Email address:
-  = @venue.email_address
-%p
-  %b Location:
-  = @venue.location_id
-
+%section#venue.container.min-height-three
+  #venueDetails.pull-left.span-two-thirds
+    %h2= @venue.name
+    = render 'shared/address', :address => @venue.location
+    %hr
+    = render 'venues/facets', :venue => @venue
+    %hr
+    %p= @venue.description
+    #calendar
+  #venuePictures.pull-right.span-one-third 
+    .mbottom
+      %h5 
+        Pictures
+        %small= link_to("Add", new_manage_picture_path, :class => 'pull-right')
+    = render "venues/slideshow", :venue => @venue
+    
 = link_to 'Edit', edit_manage_venue_path(@venue)
 \|
-= link_to 'Back', manage_venues_path
+= link_to 'Back', manage_location_path(@venue.location)
+
+:javascript
+  $(document).ready(function() {
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    $('#calendar').fullCalendar({
+      editable: true,
+      events: [
+        {
+          title: 'All Day Event',
+          start: new Date(y, m, 1)
+        },
+        {
+          title: 'Long Event',
+          start: new Date(y, m, d-5),
+          end: new Date(y, m, d-2)
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: new Date(y, m, d-3, 16, 0),
+          allDay: false
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: new Date(y, m, d+4, 16, 0),
+          allDay: false
+        },
+        {
+          title: 'Meeting',
+          start: new Date(y, m, d, 10, 30),
+          allDay: false
+        },
+        {
+          title: 'Lunch',
+          start: new Date(y, m, d, 12, 0),
+          end: new Date(y, m, d, 14, 0),
+          allDay: false
+        },
+        {
+          title: 'Birthday Party',
+          start: new Date(y, m, d+1, 19, 0),
+          end: new Date(y, m, d+1, 22, 30),
+          allDay: false
+        },
+        {
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/'
+        }
+      ]
+    });
+
+  });
