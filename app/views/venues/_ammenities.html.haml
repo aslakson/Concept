@@ -1,0 +1,5 @@
+.ammenities
+  - if venue.ammenities.any?
+    %ul
+      - venue.ammenities.each do |ammenity|
+        %li= ammenity.name

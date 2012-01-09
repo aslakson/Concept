@@ -3124,6 +3124,46 @@ input[type=submit].btn::-moz-focus-inner {
   margin-bottom: 10px;
 }
 
+/* line 45, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-thumb, .pic-small, .pic-medium, .pic-large {
+  border: 1px solid #bfbfbf;
+  padding: 4px;
+}
+
+/* line 50, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-thumb, .pic-small {
+  margin: 5px;
+}
+
+/* line 54, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-medium, .pic-large {
+  margin: 10px;
+}
+
+/* line 58, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-thumb {
+  height: 90px;
+  width: 112px;
+}
+
+/* line 63, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-small {
+  height: 210px;
+  width: 262px;
+}
+
+/* line 68, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-medium {
+  height: 330px;
+  width: 412px;
+}
+
+/* line 73, ../../app/assets/stylesheets/partials/_helpers.scss */
+.pic-large {
+  height: 600px;
+  width: 750px;
+}
+
 /* line 1, ../../app/assets/stylesheets/partials/_defaults.scss */
 footer {
   background-color: #222222;
@@ -3198,7 +3238,17 @@ footer, .min-height-one {
   width: 300px;
 }
 
-/* line 27, ../../app/assets/stylesheets/partials/_maps.scss */
+/* line 28, ../../app/assets/stylesheets/partials/_maps.scss */
+.map-wide .map_container {
+  width: 500px;
+}
+/* line 31, ../../app/assets/stylesheets/partials/_maps.scss */
+.map-wide .gmaps4rails_map {
+  height: 250px;
+  width: 500px;
+}
+
+/* line 37, ../../app/assets/stylesheets/partials/_maps.scss */
 .bing_map {
   position: absolute;
   top: 20;
@@ -3208,7 +3258,7 @@ footer, .min-height-one {
   border: #555555 2px solid;
 }
 
-/* line 36, ../../app/assets/stylesheets/partials/_maps.scss */
+/* line 46, ../../app/assets/stylesheets/partials/_maps.scss */
 .map-data-list {
   background-color: #fafafa;
   border: 1px solid #E5E3DF;
@@ -3219,7 +3269,7 @@ footer, .min-height-one {
   overflow-y: auto;
   padding: 5px;
 }
-/* line 46, ../../app/assets/stylesheets/partials/_maps.scss */
+/* line 56, ../../app/assets/stylesheets/partials/_maps.scss */
 .map-data-list a {
   color: #404040;
   display: block;
@@ -3227,7 +3277,7 @@ footer, .min-height-one {
   padding: .5em;
   text-decoration: none;
 }
-/* line 53, ../../app/assets/stylesheets/partials/_maps.scss */
+/* line 63, ../../app/assets/stylesheets/partials/_maps.scss */
 .map-data-list a:hover {
   background-color: #e6e6e6;
   text-decoration: none;

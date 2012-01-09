@@ -1,13 +1,38 @@
 %section#location.container.min-height-three
-  #locationDetails.pull-left.grid-two-thirds
-    %h2= @location.name
+  %h2
+    = image_tag @location.avatar.url(:thumb), :class => 'pic-thumb'
+    = @location.name
+  %hr
+  .span-one-third.pull-left
+    %strong Description:
     %p= @location.description
-    - if @location.venues.any?
-      %h3 Fields at this location:
-      %ul
-        - @location.venues.each do |venue|
-          %li= link_to(venue.name, manage_venue_path(venue))
-    - else
-      %h3 There are no fields at this location.
-  #locationMap.pull-right.grid-one-third.map-small
-    = gmaps4rails(@map)
+  .span-two-thirds.pull-left
+    .map-wide.pull-right
+      = gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9},"markers" => {"data" => @map}})
+%hr
+%section#location-venues.min-height-three
+  - if @location.venues.any?
+    %table
+      %thead
+        %tr
+          %th{:colspan => 2, :class => "span6"} Fields at this location:
+          %th Features
+          %th Cost/Hr
+          %th
+      %tbody
+      - @location.venues.each do |venue|
+        %tr
+          %td= link_to(image_tag(venue.avatar.url(:thumb), :class => 'pic-thumb'), venue)
+          %td
+            = link_to(venue.name, venue)
+            %br
+            = venue.description
+          %td
+            = render "venues/facets", :venue => venue
+            = render "venues/services", :venue => venue
+            = render "venues/ammenities", :venue => venue
+          %td
+            = "$#{venue.hourly_rate/100}"
+          %td.align-right= link_to "Book Now", venue, :class => 'btn primary'
+  - else
+    %h3 There are no fields at this location.

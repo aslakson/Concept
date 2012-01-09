@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120104192749) do
+ActiveRecord::Schema.define(:version => 20120109202459) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
 
   add_index "activities_venues", ["activity_id", "venue_id"], :name => "index_activities_venues_on_activity_id_and_venue_id", :unique => true
 
+  create_table "activity_venues", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ammenities", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -43,6 +48,26 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
   end
 
   add_index "ammenities_venues", ["ammenity_id", "venue_id"], :name => "index_ammenities_venues_on_ammenity_id_and_venue_id", :unique => true
+
+  create_table "ammenity_venues", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean  "all_day"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facet_venues", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "facets", :force => true do |t|
     t.string   "name"
@@ -75,6 +100,10 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
     t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "locations", ["city"], :name => "index_locations_on_city"
@@ -84,6 +113,13 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
   add_index "locations", ["organization_id"], :name => "index_locations_on_organization_id"
   add_index "locations", ["state"], :name => "index_locations_on_state"
   add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
+
+  create_table "organization_types", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organization_users", :force => true do |t|
     t.integer "organization_id"
@@ -95,9 +131,10 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
 
   create_table "organizations", :force => true do |t|
     t.string   "name"
+    t.integer  "organization_type_id"
     t.text     "description"
     t.string   "url"
-    t.string   "email_address"
+    t.string   "email"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
@@ -116,7 +153,7 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
   end
 
   add_index "organizations", ["city"], :name => "index_organizations_on_city"
-  add_index "organizations", ["email_address"], :name => "index_organizations_on_email_address", :unique => true
+  add_index "organizations", ["email"], :name => "index_organizations_on_email", :unique => true
   add_index "organizations", ["lat"], :name => "index_organizations_on_lat"
   add_index "organizations", ["lng"], :name => "index_organizations_on_lng"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
@@ -157,6 +194,11 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
   create_table "searches", :force => true do |t|
     t.string   "value"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_venues", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -221,7 +263,8 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
     t.text     "description"
     t.text     "notes"
     t.string   "url"
-    t.string   "email_address"
+    t.string   "email"
+    t.integer  "hourly_rate"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -231,7 +274,7 @@ ActiveRecord::Schema.define(:version => 20120104192749) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "venues", ["email_address"], :name => "index_venues_on_email_address"
+  add_index "venues", ["email"], :name => "index_venues_on_email"
   add_index "venues", ["location_id"], :name => "index_venues_on_location_id"
   add_index "venues", ["name"], :name => "index_venues_on_name"
 

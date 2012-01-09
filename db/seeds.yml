@@ -1,0 +1,161 @@
+activities:
+  - name: Soccer
+    description: most people call it Football
+
+services:
+  - name: Referee
+    description: Games without Referees are never fun. Who's going to tell you whether or not your balls are the right size?
+
+ammenities:
+  - name: Free Wifi
+    description: Post pictures of the game directly to Facebook and Twitter during halftime
+
+facets:
+  - name: 6v6 Soccer
+    description: This soccer field is equipped for 6v6 play
+    activity_id: 1
+  - name: Grass Field
+    description: Natural grass surface
+    activity_id: 1
+  - name: Artificial Grass Field
+    description: Old-school astro turf
+    activity_id: 1
+
+roles:
+  - name: SuperAdmin
+  - name: OrganizationAdmin
+  - name: LocationAdmin
+  - name: VenueAdmin
+  - name: BasicUser
+
+users: 
+  - first_name: Jason
+    last_name: Aslakson
+    email: aslakson@gmail.com
+    password: password
+    password_confirmation: password
+    zip_code: 02081
+    roles: [1]
+  - first_name: Andrew
+    last_name: Aslakson
+    email: jason_aslakson@yahoo.com
+    password: password
+    password_confirmation: password
+    zip_code: 02062
+    roles: [2]
+  - first_name: Lauren
+    last_name: Aslakson
+    email: lauren_aslakson@yahoo.com
+    password: password
+    password_confirmation: password
+    zip_code: 02062
+    roles: [2]
+
+organization_types:
+  - name: Seeker
+    description: Organizations that are looking for fields or locations to rent
+  - name: Provider
+    description: Organizations that are looking to rent fields or locations they own or manage
+
+organizations:
+  - name: Walpole Recreation
+    description: Group that manages and leases fields in Walpole
+    email: walpolerec@example.com
+    address_1: 1 main street
+    city: Walpole
+    state: MA
+    zip_code: 02081
+    telephone: 888-555-1212
+    organization_type_id: 2
+  - name: Gillette Stadium 
+    description: Where the Pats and Revolution play
+    email: gillettestadium@example.com
+    address_1: 1 Patriot Place
+    city: Foxboro
+    state: MA
+    zip_code: 02035
+    telephone: 508-555-4321
+    organization_type_id: 2
+  - name: Walpole Youth Soccer
+    description: Manages all Walpole youth soccer teams
+    email: walpoleyouthsoccer@walpole.ma
+    address_1: 2 Main Street
+    city: Walpole
+    state: MA
+    zip_code: 02081
+    telephone: 888-555-9876
+    organization_type_id: 1
+  - name: Norwood Youth Soccer
+    description: Manages all Norwood youth soccer teams
+    email: norwoodyouthsoccer@norwood.ma
+    address_1: 1 Neponset Street
+    city: Norwood
+    state: MA
+    zip_code: 02062
+    telephone: 781-762-1234
+    organization_type_id: 1
+
+locations:
+  - name: Gillette Stadium Field
+    description: The main field
+    telephone: 888-555-4545
+    address_1: 1 Patriot Place
+    city: Foxboro
+    state: MA
+    zip_code: 02035 
+    organization_id: 2 
+  - name: Walpole High School
+    description: Where all of the learning happens
+    telephone: 508-668-1234
+    address_1: 275 Common Street
+    city: Walpole
+    state: MA
+    zip_code: 02081
+    organization_id: 1
+  - name: Norwood High School
+    description: Where no learning whatsoever happens
+    telephone: 781-762-1234
+    address_1: 245 Nichols Street
+    city: Norwood
+    state: MA
+    zip_code: 02062
+    organization_id: 4
+
+venues:
+  - name: Gillette Practice Facility
+    description: It's a bubble!
+    url: http://gillettebubble.example.com
+    email: 
+    hourly_rate: 59500
+    location_id: 1 
+    
+  - name: Varsity Game Field
+    description: The big field with the pretty lines
+    url: 
+    email: 
+    hourly_rate: 20000
+    location_id: 2 
+  - name: Varsity Practice Field
+    description: The big field with no pretty lines
+    url: 
+    email: 
+    hourly_rate: 15000
+    location_id: 2 
+  - name: Junior Varsity Game Field
+    description: An ugly field with some ugly lines.
+    url: 
+    email: 
+    hourly_rate: 15000
+    location_id: 2 
+  - name: Junior Varsity Practice Field
+    description: An ugly field with no lines whatsover.
+    url: 
+    email: 
+    hourly_rate: 10000
+    location_id: 2 
+  - name: Norwood Soccer Field
+    description: There's only one soccer field because Norwood is a baseball/football town.
+    url: 
+    email: 
+    hourly_rate: 7500
+    location_id: 3 

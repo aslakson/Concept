@@ -1,7 +1,12 @@
 class Organization < ActiveRecord::Base
   acts_as_gmappable :lat => 'lat', :lng => 'lng'
   acts_as_mappable
-  has_attached_file :avatar, :styles => { :thumbnail => "30x30>", :small => "90x90>", :medium => "210x150>", :large => "330x230>" }
+  has_attached_file :avatar, :styles => { 
+                    :thumb => '90x',
+                    :small => '210x',
+                    :medium => '330x',
+                    :large => '60x'
+                  }, :default_style => :thumb
   has_many :locations
   has_many :organization_users
 
@@ -11,6 +16,6 @@ class Organization < ActiveRecord::Base
   }
 
   def gmaps4rails_address
-    "#{address_1}, #{city}, #{state} #{zip_code}"
+    "#{self.address_1}, #{self.city}, #{self.state} #{self.zip_code}"
   end
 end

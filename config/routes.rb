@@ -9,6 +9,7 @@ Concept::Application.routes.draw do
 
   devise_for :users
   #resources :users, :only => :show
+  resources :events
   resources :search, :except => [:edit, :update, :destroy]
   resources :organizations, :only => [:index, :show]
   resources :locations, :only => [:index, :show]

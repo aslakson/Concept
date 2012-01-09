@@ -41,3 +41,36 @@
 .mbottom {
   margin-bottom: 10px;
 }
+
+.pic-thumb, .pic-small, .pic-medium, .pic-large {
+  border: 1px solid $grayLight;
+  padding: 4px;
+}
+
+.pic-thumb, .pic-small {
+  margin: 5px;
+}
+
+.pic-medium, .pic-large {
+  margin: 10px;
+}
+
+.pic-thumb {
+  height: 90px;
+  width: 112px;
+}
+
+.pic-small {
+  height: 210px;
+  width: 262px;
+}
+
+.pic-medium {
+  height: 330px;
+  width: 412px;
+}
+
+.pic-large {
+  height: 600px;
+  width: 750px;
+}

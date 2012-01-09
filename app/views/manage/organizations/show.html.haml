@@ -3,7 +3,7 @@
 = image_tag @organization.avatar.url
 
 .pull-right.span-one-thirds.map-small
-  = gmaps4rails(@map)
+  = gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9},"markers" => {"data" => @map}})
 .span-two-thirds
   %h3= @organization.name
   = render 'shared/address', :address => @organization

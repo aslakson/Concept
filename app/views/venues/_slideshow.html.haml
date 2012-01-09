@@ -1,5 +1,7 @@
 .slideshow
   - if venue.pictures.any?
-    = image_tag venue.pictures.first.image.url(:medium)
+    = image_tag venue.pictures.first.image.url(:medium), :class => 'pic-medium'
     - venue.pictures.each do |pic|
-      = image_tag pic.image.url(:thumb)
+      = image_tag pic.image.url(:thumb), :class => 'pic-thumbnail'
+  - else
+    = image_tag venue.avatar.url(:medium), :class => 'pic-medium'

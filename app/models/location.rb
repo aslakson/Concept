@@ -1,6 +1,12 @@
 class Location < ActiveRecord::Base
   belongs_to :organization
   has_many :venues
+  has_attached_file :avatar, :styles => { 
+                    :thumb => '90x',
+                    :small => '210x',
+                    :medium => '330x',
+                    :large => '60x'
+                  }, :default_style => :thumb
   acts_as_gmappable :lat => 'lat', :lng => 'lng'
   acts_as_mappable
   
@@ -9,6 +15,6 @@ class Location < ActiveRecord::Base
   }
   
   def gmaps4rails_address
-    "#{address_1}, #{city}, #{state} #{zip_code}"
+    "#{self.address_1}, #{self.city}, #{self.state} #{self.zip_code}"
   end
 end

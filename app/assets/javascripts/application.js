@@ -10,6 +10,13 @@
 //= require twitter/bootstrap
 //= require_directory ./gmaps4rails
 //= require tinymce-jquery
+
+$.ajaxSetup({
+  beforeSend: function(xhr) {
+    xhr.setRequestHeader("Accept", "text/javascript");
+  }
+});
+
 $(function () {
   $('.topbar').dropdown()
 })

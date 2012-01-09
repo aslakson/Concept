@@ -1,6 +1,6 @@
 %section.container
   .span-two-thirds.pull-left
-    = gmaps4rails(@maps)
+    = gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9},"markers" => {"data" => @maps}})
   .span-one-third.map-data-list.pull-left
     - @locations.each do |location|
       %a{:href=>location_path(location)}

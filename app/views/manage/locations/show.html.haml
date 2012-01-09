@@ -12,4 +12,4 @@
     - else
       %h3 There are no fields at this location.
   #locationMap.pull-right.grid-one-third.map-small
-    = gmaps4rails(@map)
+    = gmaps({"map_options" => {"auto_zoom" => false, "zoom" => 9},"markers" => {"data" => @map}})

@@ -1,0 +1,5 @@
+.services
+  - if venue.services.any?
+    %ul
+      - venue.services.each do |service|
+        %li= service.name

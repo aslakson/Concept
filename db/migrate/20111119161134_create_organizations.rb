@@ -5,7 +5,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.integer :organization_type_id
       t.text :description
       t.string :url
-      t.string :email_address
+      t.string :email
       t.string :address_1
       t.string :address_2
       t.string :city
@@ -19,7 +19,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :organizations, :email_address, :unique => true
+    add_index :organizations, :email, :unique => true
     add_index :organizations, :name
     add_index :organizations, :city
     add_index :organizations, :state
